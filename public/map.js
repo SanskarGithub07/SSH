@@ -311,3 +311,5 @@ function error(err) {
 }
 
 navigator.geolocation.getCurrentPosition(success, error, options);
+console.log(restaurantPlace);
+console.log(distCenter)
