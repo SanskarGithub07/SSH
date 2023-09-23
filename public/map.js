@@ -279,6 +279,7 @@ function success(pos) {
           const restaurantInfo = {
             coordinates: coordinates,
             poi: poi,
+            resDistance: resDistance
           };
 
           arrayInfo.push(restaurantInfo);
@@ -288,10 +289,10 @@ function success(pos) {
         const restaurantInfoDiv = document.getElementById("restaurant-info");
         // Display restaurant information in the HTML div
         arrayInfo.forEach((info) => {
-          restaurantInfoDiv.innerHTML += `
-  <p>Coordinates: ${info.coordinates}</p>
-  <p>POI Value: ${info.poi}</p>
-`;
+          restaurantInfoDiv.innerHTML += `<ul>
+  <li>Coordinates: ${info.coordinates}</li>
+  <li>Distance(in kilometres): ${Math.floor(info.resDistance) / 1000 + "km"}</li>
+  <li>POI Value: ${info.poi}</li></ul>`;
         });
       })
       .catch((error) => {
@@ -312,4 +313,4 @@ function error(err) {
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 console.log(restaurantPlace);
-console.log(distCenter)
+console.log(distCenter);
